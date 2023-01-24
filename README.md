@@ -31,7 +31,7 @@ pip install -r requirements.txt
 
 ### _Примеры команд_
 
-Создаст файл .csv с таблицей из двух колонок: "Статус" и "Количество":
+Создает файл .csv с таблицей из двух колонок: "Статус" и "Количество":
 ```
 python main.py pep -o file
 ```
@@ -42,6 +42,10 @@ python main.py latest-versions -o pretty
 Выводит ссылки на нововведения в python:
 ```
 python main.py whats-new
+```
+Скачивает архив с документацией Python:
+```
+python main.py download
 ```
 
 Автор: IrinaSMR
