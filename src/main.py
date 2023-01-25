@@ -5,6 +5,7 @@ from urllib.parse import urljoin
 
 import requests_cache
 from bs4 import BeautifulSoup
+from collections import defaultdict
 from tqdm import tqdm
 
 from configs import configure_argument_parser, configure_logging
@@ -117,12 +118,12 @@ def pep(session):
     body_table = find_tag(section_tag, "tbody")
     rows = body_table.find_all("tr")
 
-    counter = {}
+    counter = defaultdict(int)
     for string in rows:
         td_tag = find_tag(string, "td")
         href_object = td_tag.find_next_sibling("td")
         td_tag = td_tag.text
-        link_object = urljoin(PEP, href_object.a["href"])
+        link_object = urljoin(PEP, href_object.a["href"], '/')
         response = get_response(session, link_object)
         if response is None:
             return
